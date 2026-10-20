@@ -1,0 +1,132 @@
+[
+  {
+    "tag": "BASELINE",
+    "dump_exit": 0,
+    "pgr": 5,
+    "strength": 0.28,
+    "live_exit": 1,
+    "live_sec": 0.8,
+    "live_out": "",
+    "live_err": "错误: nai错误响应：promptGuidanceRescale不能大于1",
+    "http": [
+      [
+        "/",
+        200
+      ],
+      [
+        "/api/schema",
+        200
+      ],
+      [
+        "/api/config",
+        200
+      ],
+      [
+        "/api/status",
+        200
+      ],
+      [
+        "/api/presets",
+        200
+      ]
+    ],
+    "mode_def": "",
+    "mode_opts": [
+      "",
+      "官方",
+      "反代"
+    ],
+    "schema_cfg": "5",
+    "schema_strength": "0.28",
+    "ini_cfg": "0.28",
+    "ini_strength": "0.52",
+    "ini_mode": "中转"
+  },
+  {
+    "tag": "MODIFIED",
+    "dump_exit": 0,
+    "pgr": 0.28,
+    "strength": 0.52,
+    "live_exit": 0,
+    "live_sec": 15.1,
+    "live_out": "seed=1717520987 images=0\nimage_url: https://qnm.hunliji.com/2274ba49_01-13-41-251324-d76e1c2d.png",
+    "live_err": "",
+    "http": [
+      [
+        "/",
+        200
+      ],
+      [
+        "/api/schema",
+        200
+      ],
+      [
+        "/api/config",
+        200
+      ],
+      [
+        "/api/status",
+        200
+      ],
+      [
+        "/api/presets",
+        200
+      ]
+    ],
+    "mode_def": "中转",
+    "mode_opts": [
+      "",
+      "中转",
+      "官方",
+      "反代"
+    ],
+    "schema_cfg": "0.28",
+    "schema_strength": "0.52",
+    "ini_cfg": "0.28",
+    "ini_strength": "0.52",
+    "ini_mode": "中转"
+  },
+  {
+    "tag": "ROLLBACK",
+    "dump_exit": 0,
+    "pgr": 5,
+    "strength": 0.28,
+    "live_exit": 1,
+    "live_sec": 0.8,
+    "live_out": "",
+    "live_err": "错误: nai错误响应：promptGuidanceRescale不能大于1",
+    "http": [
+      [
+        "/",
+        200
+      ],
+      [
+        "/api/schema",
+        200
+      ],
+      [
+        "/api/config",
+        200
+      ],
+      [
+        "/api/status",
+        200
+      ],
+      [
+        "/api/presets",
+        200
+      ]
+    ],
+    "mode_def": "",
+    "mode_opts": [
+      "",
+      "官方",
+      "反代"
+    ],
+    "schema_cfg": "5",
+    "schema_strength": "0.28",
+    "ini_cfg": "0.28",
+    "ini_strength": "0.52",
+    "ini_mode": "中转"
+  }
+]

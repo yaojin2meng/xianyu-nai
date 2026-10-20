@@ -1,0 +1,98 @@
+declutter          [('ascii', ['0x2ba864', '0x2baf83']), ('utf-8', ['0x2ba864', '0x2baf83']), ('gbk', ['0x2ba864', '0x2baf83'])]
+colorize           [('ascii', ['0x2ba870', '0x2baeef']), ('utf-8', ['0x2ba870', '0x2baeef']), ('gbk', ['0x2ba870', '0x2baeef'])]
+lineart            [('ascii', ['0x2ba884', '0x2baf1f']), ('utf-8', ['0x2ba884', '0x2baf1f']), ('gbk', ['0x2ba884', '0x2baf1f'])]
+sketch             [('ascii', ['0x2ba87c', '0x2baf4f']), ('utf-8', ['0x2ba87c', '0x2baf4f']), ('gbk', ['0x2ba87c', '0x2baf4f'])]
+bg-removal         NOT FOUND
+bg_removal         NOT FOUND
+superresolution    NOT FOUND
+superResolution    [('ascii', ['0x39cb91']), ('utf-8', ['0x39cb91']), ('gbk', ['0x39cb91'])]
+emotion            [('ascii', ['0x2ba3ff', '0x2ba850']), ('utf-8', ['0x2ba3ff', '0x2ba850']), ('gbk', ['0x2ba3ff', '0x2ba850'])]
+augment            [('ascii', ['0x2ba9a8']), ('utf-8', ['0x2ba9a8']), ('gbk', ['0x2ba9a8'])]
+req_type           [('ascii', ['0x2ba858']), ('utf-8', ['0x2ba858']), ('gbk', ['0x2ba858'])]
+#模型                [('gbk', ['0x2b6c9d', '0x2b6cfe', '0x2b6d32', '0x2b70ba', '0x2b70ef', '0x2b732e'])]
+重制版                NOT FOUND
+nai3指令             [('gbk', ['0x39aa48'])]
+画图                 [('gbk', ['0x2b5af2', '0x2b5bc2', '0x2b5bd7', '0x2b5bed', '0x2b5ca3', '0x2b5cb9'])]
+aiurl              [('ascii', ['0x2b8ae0', '0x2b9016', '0x2bc115']), ('utf-8', ['0x2b8ae0', '0x2b9016', '0x2bc115']), ('gbk', ['0x2b8ae0', '0x2b9016', '0x2bc115'])]
+plug/AI/nai3       [('ascii', ['0x2b9009', '0x2b9021', '0x2b9039']), ('utf-8', ['0x2b9009', '0x2b9021', '0x2b9039']), ('gbk', ['0x2b9009', '0x2b9021', '0x2b9039'])]
+
+--- augment region strings (search 'emotion') ---
+off 0x2BA3FF VA 0x102BA3FF
+   0x2BA3FC VA 0x102BA3FC [utf-8] '#&#emotion#&#'  <<<
+   0x2BA411 VA 0x102BA411 [utf-8] '@p@nai_model_name'
+   0x2BA424 VA 0x102BA424 [utf-8] 'nai_noise_schedule'
+   0x2BA438 VA 0x102BA438 [utf-8] 'nai_sampler'
+   0x2BA444 VA 0x102BA444 [gbk] '#差异([\\d.]+)'
+   0x2BA454 VA 0x102BA454 [gbk] '#(噪声方式|噪声)([^#]+)'
+   0x2BA46C VA 0x102BA46C [utf-8] '#sm(\\d+)'
+   0x2BA478 VA 0x102BA478 [utf-8] '#sm_dyn(\\d+)'
+   0x2BA488 VA 0x102BA488 [utf-8] '#VT=ie:\\[.*?\\]rs:\\[.*?\\]#'
+   0x2BA4A4 VA 0x102BA4A4 [gbk] '尺寸修正：'
+   0x2BA4B0 VA 0x102BA4B0 [gbk] '#差异'
+   0x2BA4B8 VA 0x102BA4B8 [gbk] '#指导'
+   0x2BA4C0 VA 0x102BA4C0 [gbk] '#识别率'
+   0x2BA4C8 VA 0x102BA4C8 [utf-8] '#sm_dyn1'
+   0x2BA4D4 VA 0x102BA4D4 [utf-8] '#sm1'
+   0x2BA4DC VA 0x102BA4DC [gbk] '#方图'
+   0x2BA4E4 VA 0x102BA4E4 [utf-8] ']rs:'
+   0x2BA4EC VA 0x102BA4EC [utf-8] 'ie:['
+   0x2BA4F4 VA 0x102BA4F4 [utf-8] ']#'
+   0x2BA4F8 VA 0x102BA4F8 [utf-8] 'rs:['
+   0x2BA500 VA 0x102BA500 [utf-8] 'nai-diffusion-3'
+   0x2BA510 VA 0x102BA510 [gbk] ' 调整后：'
+   0x2BA51C VA 0x102BA51C [gbk] '调整图片尺寸-调整前：'
+   0x2BA534 VA 0x102BA534 [utf-8] ']##'
+   0x2BA538 VA 0x102BA538 [utf-8] ']##['
+   0x2BA540 VA 0x102BA540 [utf-8] '##['
+   0x2BA544 VA 0x102BA544 [gbk] '请稍后,预计需要20秒'
+   0x2BA55E VA 0x102BA55E [utf-8] '0A'
+   0x2BA566 VA 0x102BA566 [utf-8] 'P@\x01'
+   0x2BA56C VA 0x102BA56C [utf-8] 'N'
+   0x2BA570 VA 0x102BA570 [utf-8] '{'
+   0x2BA572 VA 0x102BA572 [utf-8] '5'
+   0x2BA574 VA 0x102BA574 [utf-8] '5'
+   0x2BA576 VA 0x102BA576 [utf-8] '7'
+   0x2BA578 VA 0x102BA578 [utf-8] 'C'
+   0x2BA57A VA 0x102BA57A [utf-8] 'F'
+   0x2BA57C VA 0x102BA57C [utf-8] '4'
+   0x2BA57E VA 0x102BA57E [utf-8] '0'
+   0x2BA580 VA 0x102BA580 [utf-8] '6'
+   0x2BA582 VA 0x102BA582 [utf-8] '-'
+   0x2BA584 VA 0x102BA584 [utf-8] '1'
+   0x2BA586 VA 0x102BA586 [utf-8] 'A'
+   0x2BA588 VA 0x102BA588 [utf-8] '0'
+   0x2BA58A VA 0x102BA58A [utf-8] '4'
+off 0x2BA850 VA 0x102BA850
+   0x2BA850 VA 0x102BA850 [utf-8] 'emotion'  <<<
+   0x2BA858 VA 0x102BA858 [utf-8] 'req_type'  <<<
+   0x2BA864 VA 0x102BA864 [utf-8] 'declutter'  <<<
+   0x2BA870 VA 0x102BA870 [utf-8] 'colorize'  <<<
+   0x2BA87C VA 0x102BA87C [utf-8] 'sketch'  <<<
+   0x2BA884 VA 0x102BA884 [utf-8] 'lineart'  <<<
+   0x2BA88C VA 0x102BA88C [utf-8] 'Authorization: Bearer '
+   0x2BA8A4 VA 0x102BA8A4 [utf-8] 'nai3api'
+   0x2BA8AC VA 0x102BA8AC [utf-8] '/api/generate_image'
+   0x2BA8C0 VA 0x102BA8C0 [gbk] 'nai接口返回为空'
+   0x2BA8D0 VA 0x102BA8D0 [gbk] 'nai链接失败'
+   0x2BA8DC VA 0x102BA8DC [gbk] 'nai错误响应：'
+   0x2BA8EC VA 0x102BA8EC [gbk] 'nai绘图失败，请检查后重试'
+   0x2BA908 VA 0x102BA908 [utf-8] 'info.seed'
+   0x2BA914 VA 0x102BA914 [utf-8] 'info.positivePrompt'
+   0x2BA928 VA 0x102BA928 [gbk] '上传图片完成'
+   0x2BA938 VA 0x102BA938 [gbk] '\r\n# 噪声调度:'
+   0x2BA948 VA 0x102BA948 [utf-8] '![nai #'
+   0x2BA950 VA 0x102BA950 [gbk] '官方key未配置，请配置后再来绘图'
+   0x2BA970 VA 0x102BA970 [utf-8] 'nai3officialapi'
+   0x2BA980 VA 0x102BA980 [gbk] '官方接口未配置(naiofficialapi)'
+   0x2BA9A0 VA 0x102BA9A0 [utf-8] '/'
+   0x2BA9A4 VA 0x102BA9A4 [utf-8] '/ai/augment-image'
+   0x2BA9B8 VA 0x102BA9B8 [utf-8] 'defry'
+   0x2BA9C0 VA 0x102BA9C0 [utf-8] '/ai/generate-image'
+   0x2BA9D4 VA 0x102BA9D4 [utf-8] 'input'
+   0x2BA9DC VA 0x102BA9DC [utf-8] 'img2'
+
+--- img0.jpg dimensions ---
+jpg bytes=393630 dims=1920x1200
+
+--- template json full (0x2BA5F8..0x2BA700) ---
+'{\r\n    "model": "nai-diffusion-3",\r\n    "positivePrompt": "",\r\n    "negativePrompt": "",\r\n    "scale": 5,\r\n    "steps": 28,\r\n    "width": 1024,\r\n    "height": 1024,\r\n    "promptGuidanceRescale": 0,\r\n    "noise_schedule": "native",\r\n    "seed": "303'

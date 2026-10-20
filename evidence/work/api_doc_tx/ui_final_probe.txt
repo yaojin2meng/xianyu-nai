@@ -1,0 +1,14 @@
+/              HTTP=200 bytes=10222
+/api/schema    HTTP=200 bytes=12315
+  sections=18
+  nai3设置/模式 type=select def='中转' opts=['', '中转', '官方', '反代']
+  nai3参数/cfg type=number def='0.28' opts=None
+  nai3参数/strength type=number def='0.52' opts=None
+/api/config    HTTP=200 bytes=3039
+  nai3设置.模式='中转'
+  nai3参数.cfg='0.28' strength='0.52'
+  重制版.nai3api='https://nai.xianyuw.cn'
+  sections_present=18
+/api/status    HTTP=200 bytes=212
+  status_keys=['comfy_url', 'data_dir', 'enabled', 'ini_path', 'inited', 'nai_mode', 'sd_url']
+/api/presets   HTTP=200 bytes=95

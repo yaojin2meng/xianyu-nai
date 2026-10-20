@@ -1,0 +1,20 @@
+POST  /api/generate_image      -> 400  {"success":false,"error":"Invalid parameters","message":"positivePrompt字段是必需的（正向提示词，描述想要生成的图像内容）","details":"缺少必需字段: positivePrompt","missingFields":["positivePrompt"]}
+POST  /api/generate_image      -> 400  {"success":false,"error":"Invalid parameters","message":"model字段是必需的（AI模型名称）","details":"缺少必需字段: model","missingFields":["model"]}
+GET   /api/generate_image      -> 200  <!doctype html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="X-UA-Compatible" content="ie=edge"><title>NAI Drawing Platform</title><meta name="description" content="NAI画图API聚合平台 - 统一管理共享、独享、官方接口"><link rel="icon" type="image/x-icon" href="/favicon.ico"><style>/* 加载时的简单样式 */
+   
+GET   /api/user/subscription   -> 200  <!doctype html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="X-UA-Compatible" content="ie=edge"><title>NAI Drawing Platform</title><meta name="description" content="NAI画图API聚合平台 - 统一管理共享、独享、官方接口"><link rel="icon" type="image/x-icon" href="/favicon.ico"><style>/* 加载时的简单样式 */
+   
+GET   /user/subscription       -> 200  <!doctype html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="X-UA-Compatible" content="ie=edge"><title>NAI Drawing Platform</title><meta name="description" content="NAI画图API聚合平台 - 统一管理共享、独享、官方接口"><link rel="icon" type="image/x-icon" href="/favicon.ico"><style>/* 加载时的简单样式 */
+   
+GET   /api/points              -> 200  <!doctype html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="X-UA-Compatible" content="ie=edge"><title>NAI Drawing Platform</title><meta name="description" content="NAI画图API聚合平台 - 统一管理共享、独享、官方接口"><link rel="icon" type="image/x-icon" href="/favicon.ico"><style>/* 加载时的简单样式 */
+   
+GET   /api/models              -> 200  <!doctype html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="X-UA-Compatible" content="ie=edge"><title>NAI Drawing Platform</title><meta name="description" content="NAI画图API聚合平台 - 统一管理共享、独享、官方接口"><link rel="icon" type="image/x-icon" href="/favicon.ico"><style>/* 加载时的简单样式 */
+   
+GET   /api/nsfw_check          -> 200  <!doctype html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="X-UA-Compatible" content="ie=edge"><title>NAI Drawing Platform</title><meta name="description" content="NAI画图API聚合平台 - 统一管理共享、独享、官方接口"><link rel="icon" type="image/x-icon" href="/favicon.ico"><style>/* 加载时的简单样式 */
+   
+POST  /api/nsfw_check          -> 404  {"success":false,"error":"未找到","message":"路由 POST /api/nsfw_check 未找到"}
+GET   /api/health              -> 200  <!doctype html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="X-UA-Compatible" content="ie=edge"><title>NAI Drawing Platform</title><meta name="description" content="NAI画图API聚合平台 - 统一管理共享、独享、官方接口"><link rel="icon" type="image/x-icon" href="/favicon.ico"><style>/* 加载时的简单样式 */
+   
+GET   /health                  -> 200  {"status":"healthy","timestamp":"2026-10-19T22:14:26.258Z","uptime":3286529.629713904,"memory":{"used":24,"total":29}}
+GET   /                        -> 200  <!doctype html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="X-UA-Compatible" content="ie=edge"><title>NAI Drawing Platform</title><meta name="description" content="NAI画图API聚合平台 - 统一管理共享、独享、官方接口"><link rel="icon" type="image/x-icon" href="/favicon.ico"><style>/* 加载时的简单样式 */
+   

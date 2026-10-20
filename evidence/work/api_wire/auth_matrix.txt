@@ -1,0 +1,5 @@
+no_key           -> 401 0.3s {"success":false,"error":"Unauthorized","message":"Token is required"}
+bad_key          -> 401 0.2s {"success":false,"error":"Unauthorized","message":"Token not found"}
+bad_model        -> 200 6.0s {"status":"completed","completed_at":"2026-10-19T22:24:50.228Z","info":{"seed":1735500861,"positivePrompt":"test"},"image_url":"https://qnm.hunliji.com/05e99b0c_22-24-45-360058-d5d27fd8.png"}
+width_out        -> 200 6.3s {"status":"completed","completed_at":"2026-10-19T22:24:56.511Z","info":{"seed":2626727020,"positivePrompt":"test"},"image_url":"https://qnm.hunliji.com/579da55d_22-24-50-919325-33d5e23d.png"}
+offic key form   -> 500 0.5s {"status":"failed","error":"HTTP 401: Unauthorized","completed_at":"2026-10-19T22:24:57.006Z"}

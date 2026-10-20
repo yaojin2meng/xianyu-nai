@@ -1,0 +1,15 @@
+{
+  "model": "nai-diffusion-3",
+  "positivePrompt": "1girl, solo, upper body, white background",
+  "negativePrompt": "lowres, {bad}, error, fewer, extra, missing, worst quality, jpeg artifacts, bad quality, watermark, unfinished, displeasing, chromatic aberration, signature, extra digits, artistic error, username, scan, [abstract]",
+  "scale": 5,
+  "steps": 28,
+  "width": 832,
+  "height": 1216,
+  "promptGuidanceRescale": 0.28,
+  "noise_schedule": "native",
+  "seed": "-1",
+  "sampler": "k_euler",
+  "sm": false,
+  "sm_dyn": false
+}

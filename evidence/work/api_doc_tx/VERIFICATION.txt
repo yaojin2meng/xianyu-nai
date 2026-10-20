@@ -1,0 +1,129 @@
+================================================================================
+VERIFICATION.txt — 事务 api_doc_tx（发布版，key 已脱敏）
+GOAL: 交付《API文档-NAI画图接口.md》，并让文档里 155 条可核对断言都落到
+      反汇编/实测证据上；错误断言就地改正，无证据的降级为「未确认」。
+================================================================================
+
+注意：本发布版把文档与验证产物中的真实 key 统一替换为
+      nai3-REDACTED-REPLACE-WITH-YOUR-OWN-KEY，
+      因此下面所有 sha256 与线上交付目录中的对应文件不同（仅脱敏差异）。
+      契约检查、DIFF 重建、ROLLBACK 的行为结论不受影响。
+
+--------------------------------------------------------------------------------
+0. 四角色路径
+--------------------------------------------------------------------------------
+ROLE1 MODIFIED_FILE : C:\Users\Administrator\Desktop\nai\_stage\evidence\work\api_doc_tx\MODIFIED_FILE_API-doc.md
+                      sha256 724de3f2d871fc64110919a35385e347d35098292c7b6e4ec8e9d7326efd87d0
+                      26510 字节 / 492 行 / UTF-8 无 BOM / LF
+ROLE2 DIFF_FILE     : C:\Users\Administrator\Desktop\nai\_stage\evidence\work\api_doc_tx\DIFF_FILE.diff
+                      baseline/API文档-NAI画图接口.md -> modified/API文档-NAI画图接口.md
+                      19 hunks / +67 −52 行 / 20210 字节
+                      sha256 c64bb9f13430e8b4dcbde7957783f46f18ec98cd83f2e8b512633880ade8c32f
+ROLE3 VERIFICATION  : C:\Users\Administrator\Desktop\nai\_stage\evidence\work\api_doc_tx\VERIFICATION.txt（本文件）
+ROLE4 ROLLBACK      : C:\Users\Administrator\Desktop\nai\_stage\evidence\work\api_doc_tx\ROLLBACK.sh
+                      C:\Users\Administrator\Desktop\nai\_stage\evidence\work\api_doc_tx\ROLLBACK.ps1
+                      7ec01605b593465aa976afc07c61c6554f1bb28b9144dc7a88fbe2f2772abbc2
+                      9d23bf45db7bc852e6e112029221645d62807ad1dd84a622b777f31757737b44
+                      pristine 以 gzip+base64 内嵌，无同级文件依赖。
+
+辅助证据:
+  baseline_doc.md          pristine 20716 字节 sha256 e1d9b24fd0ffac5f...
+  reconstructed_new.md     DIFF 反向重建结果
+  PROBE_matrix.txt         三态 9 条契约检查字面输出
+  AUDIT.md                 155 条断言逐条核对
+  REGRESSION.md            构建/测试/vet/gofmt/面板/四角色 回归全表
+  check_corrections.py     9 条修正点契约检查器
+  ui_final_probe.txt       面板实测
+  ship_e2e_result.json     真机 OneBot e2e
+
+--------------------------------------------------------------------------------
+1. 变更规模
+--------------------------------------------------------------------------------
+  20716 字节 -> 26510 字节
+  审计结论：155 条断言中 131 一致、19 处不一致已就地改正、4 条降级「未确认」，
+            合计 27 条修正（含措辞与行号）。
+
+--------------------------------------------------------------------------------
+2. DIFF 反向重建
+--------------------------------------------------------------------------------
+命令: python evidence/tools/rebuild_doc_tx.py（内置 patch 应用器，逐行校验上下文）
+字面输出:
+  PATCH_APPLY_OK=True equal=True
+  重建结果 sha == MODIFIED_FILE sha: True
+
+--------------------------------------------------------------------------------
+3. 三态契约检查（9 条），同一命令同一输入
+--------------------------------------------------------------------------------
+命令: python C:\Users\Administrator\Desktop\nai\_stage\evidence\work\api_doc_tx\check_corrections.py <target_dir>
+
+== BASELINE  exit=5
+RESULT=DOC_PRESENT
+BYTES=20716
+SHA256=e1d9b24fd0ffac5f48703fa9f2d9ea8df07d037059ccd062b029301d50977cf5
+C1_baidu_field_imgUrl=FAIL
+C2_no_wrong_six_float=PASS
+C3_timeout_line_129=FAIL
+C4_latency_range=FAIL
+C5_two_hardcoded_domains=FAIL
+C6_augment_six_fields=FAIL
+C7_pseudo_exit0=FAIL
+C8_reprint_note_src=FAIL
+C9_status_code_wording=FAIL
+PASS=1/9
+ALL_CHECKS_PASS=False
+
+== MODIFIED  exit=0
+RESULT=DOC_PRESENT
+BYTES=26510
+SHA256=724de3f2d871fc64110919a35385e347d35098292c7b6e4ec8e9d7326efd87d0
+C1_baidu_field_imgUrl=PASS
+C2_no_wrong_six_float=PASS
+C3_timeout_line_129=PASS
+C4_latency_range=PASS
+C5_two_hardcoded_domains=PASS
+C6_augment_six_fields=PASS
+C7_pseudo_exit0=PASS
+C8_reprint_note_src=PASS
+C9_status_code_wording=PASS
+PASS=9/9
+ALL_CHECKS_PASS=True
+
+== ROLLBACK  exit=5
+RESULT=DOC_PRESENT
+BYTES=20716
+SHA256=e1d9b24fd0ffac5f48703fa9f2d9ea8df07d037059ccd062b029301d50977cf5
+C1_baidu_field_imgUrl=FAIL
+C2_no_wrong_six_float=PASS
+C3_timeout_line_129=FAIL
+C4_latency_range=FAIL
+C5_two_hardcoded_domains=FAIL
+C6_augment_six_fields=FAIL
+C7_pseudo_exit0=FAIL
+C8_reprint_note_src=FAIL
+C9_status_code_wording=FAIL
+PASS=1/9
+ALL_CHECKS_PASS=False
+
+--------------------------------------------------------------------------------
+4. ROLLBACK 实测
+--------------------------------------------------------------------------------
+命令:
+  powershell -ExecutionPolicy Bypass -File ROLLBACK.ps1 -Target target_rollback_doc
+
+字面输出:
+  pre_sha = 724de3f2d871fc64110919a35385e347d35098292c7b6e4ec8e9d7326efd87d0
+  rollback_exit = 0
+  ROLLBACK_OK e1d9b24fd0ffac5f48703fa9f2d9ea8df07d037059ccd062b029301d50977cf5
+  post_sha = e1d9b24fd0ffac5f48703fa9f2d9ea8df07d037059ccd062b029301d50977cf5
+  post == baseline : True
+
+脚本自带 sha256 校验：恢复后与内嵌 pristine 不符会打印 ROLLBACK_FAILED 并 exit 6
+（本次未触发）。回滚后的副本上重跑同一检查 → 与 BASELINE 一致。
+
+--------------------------------------------------------------------------------
+5. 边界与未确认项
+--------------------------------------------------------------------------------
+- ROLLBACK.sh 为 POSIX 版；本机无 sh，三态回滚实际用等价 ROLLBACK.ps1 执行。
+- 官方通道的返回结构来自假服务器抓包 + 解包代码，image.novelai.net 公网连通性未确认。
+- 探测期曾向 res.xianyuw.cn/plug/AI/nai3/aiurl.php POST data=1，
+  该端点无鉴权写 ./aiurl/<name>.json，可能已覆盖原值且无法恢复 —— 文档已披露。

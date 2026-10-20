@@ -1,0 +1,29 @@
+{
+  "before": {
+    "main.go": "5bf3bc9a2e9ebb2e4b4c8f5efb612781d76e9e9cc32d5c8c38fc2aa87af1ff69",
+    "nai/client.go": "b4020a6a9f8a67f3004a7ab9c078a9962a7ac9dd50fdab58659e7442e74b7186",
+    "nai/ui.go": "6915578cdd2200d6b486c7fe91638702b6a554401d29524ceda38a26efe91c75",
+    "nai/client_test.go": "a3594eaf0ca5ca2cf4857cb3e81215cee5e58361da1bf976a14811ed0e42bcbb",
+    "nai/pipeline.go": "4cc2f198cc77544a0c5b62d26a373cb5963556a971c8a37f7d5ffcd4b3eb92fd",
+    "nai/sd_cmd.go": "ce04b336fa8b20177ca08b340bd0d31ff1a087fd91963b25e9ec6f9158374be4"
+  },
+  "after": {
+    "main.go": "8542a2d74f28aeb8320c173ea4fb5a75b7fd804a1ad26123a36862d09b2b9b1d",
+    "nai/client.go": "d00d96703bbdb5f4faa0934993c7bf92c84d3ff83fd2e02c74115a9a61e1e5e0",
+    "nai/ui.go": "872976bf9f453e2fa08a3935e56d6c4114b75f75754bce0a670bff7e2d623221",
+    "nai/client_test.go": "2407833c001d2bab97d11ff4f1ff5bf5c6425cc1a2b75057bba5f0f41dc232e0",
+    "nai/pipeline.go": "dfe0af4ede9174a788117f91c177fd8991f107049a746d3fc830e9643985f814",
+    "nai/sd_cmd.go": "516662c55037061c2127a2737a9e360d43d5636e627dcece5ba6b660970aba1c"
+  },
+  "baseline": {
+    "main.go": "8542a2d74f28aeb8320c173ea4fb5a75b7fd804a1ad26123a36862d09b2b9b1d",
+    "nai/client.go": "d00d96703bbdb5f4faa0934993c7bf92c84d3ff83fd2e02c74115a9a61e1e5e0",
+    "nai/ui.go": "872976bf9f453e2fa08a3935e56d6c4114b75f75754bce0a670bff7e2d623221",
+    "nai/client_test.go": "2407833c001d2bab97d11ff4f1ff5bf5c6425cc1a2b75057bba5f0f41dc232e0",
+    "nai/pipeline.go": "dfe0af4ede9174a788117f91c177fd8991f107049a746d3fc830e9643985f814",
+    "nai/sd_cmd.go": "516662c55037061c2127a2737a9e360d43d5636e627dcece5ba6b660970aba1c"
+  },
+  "exit": 0,
+  "all_equal": true,
+  "stdout": "restored main.go\r\nrestored nai\\client.go\r\nrestored nai\\ui.go\r\nrestored nai\\client_test.go\r\nrestored nai\\pipeline.go\r\nrestored nai\\sd_cmd.go\r\nROLLBACK_OK\r\n"
+}

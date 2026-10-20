@@ -1,0 +1,221 @@
+================================================================================
+VERIFICATION.txt — 事务 key_api_tx
+GOAL: 让「nai3- 反代 key + nai.xianyuw.cn 通道」在本项目里真正跑通出图，
+      并把两个与 DLL 默认值不符的默认值改回实测值。
+================================================================================
+
+事务目录: C:\Users\Administrator\Desktop\nai\work\key_api_tx
+仓库:     C:\Users\Administrator\Desktop\nai\xianyu-nai
+复现脚本: C:\Users\Administrator\Desktop\nai\work\rebuild_key_tx.py
+
+--------------------------------------------------------------------------------
+0. 四角色路径（全部已实际 reopen）
+--------------------------------------------------------------------------------
+ROLE1 MODIFIED_FILE : C:\Users\Administrator\Desktop\nai\xianyu-nai\           (工作区 = 修改后)
+                      镜像: work\key_api_tx\MODIFIED_FILE\
+                      main.go
+                      nai\client.go
+                      nai\ui.go
+                      nai\client_test.go
+                      nai\pipeline.go
+                      nai\sd_cmd.go
+ROLE2 DIFF_FILE     : C:\Users\Administrator\Desktop\nai\work\key_api_tx\DIFF_FILE.patch
+ROLE3 VERIFICATION  : C:\Users\Administrator\Desktop\nai\work\key_api_tx\VERIFICATION.txt  (本文件)
+ROLE4 ROLLBACK      : C:\Users\Administrator\Desktop\nai\work\key_api_tx\ROLLBACK.sh
+                      C:\Users\Administrator\Desktop\nai\work\key_api_tx\ROLLBACK.ps1
+
+辅助证据:
+  baseline\                       原始字节（6 文件）
+  patch_verify\                   DIFF 反向重建结果
+  build_baseline\  build_modified\  rollback_tree\   三棵可编译树 + 三个 exe
+  dump_body_{baseline,modified,rollback}.json
+  ui_schema_matrix.json
+  onebot_matrix.json
+  rollback_hashes.json
+  _gates.json  _final_gates.json
+
+--------------------------------------------------------------------------------
+1. GOAL 的具体改动点（6 文件 / 9 hunks / +17 -28 行）
+--------------------------------------------------------------------------------
+(1) nai/client.go   DefaultConfig()
+      Cfg:      5      -> 0.28   // [nai3参数]/cfg 默认 "0.28"
+                                 //   读配置项 0x100A4282 → 默认串 0x1039AC60
+      Strength: 0.28   -> 0.52   // [nai3参数]/strength 默认 "0.52"
+                                 //   读配置项 0x100A433D → 默认串 0x1039AB54
+      Mode:     ""     -> "中转"  // [nai3设置]/模式 默认串 0x102B5C04 = "中转"
+                                 //   读配置项调用点 0x100A4051
+      isOfficial() 判据保持 `== "官方"`（0x102B5C20），"中转" 等价于反代。
+
+(2) nai/ui.go   UISchema()  18 分页中的 [nai3设置] / [nai3参数]
+      num("cfg",      "CFG",     "5"    ) -> "0.28"
+      num("strength", "重绘强度", "0.28" ) -> "0.52"
+      sel("模式", "模式（官方 / 反代）", "", "", "官方", "反代")
+        -> sel("模式", "模式（官方 / 反代）", "中转", "", "中转", "官方", "反代")
+      修复点：ini 实际值 模式=中转 原先不在 select 取值域内，面板下拉框显示为空。
+
+(3) nai/client_test.go  期望串 promptGuidanceRescale 5 -> 0.28
+
+(4) nai/pipeline.go  新增 8.1 段（反代只回 image_url 时下载回填）：
+      // 8.1 反代只给 image_url、不给 base64 时（如 nai.xianyuww.cn / nai.xianyuw.cn），
+      // 需要把直链下载回来，否则下游按"没出图"处理。
+      if len(out.Images) == 0 && strings.TrimSpace(out.ImageURL) != "" {
+          if b, err := c2.FetchImageBytes(ctx, out.ImageURL); err == nil && len(b) > 0 {
+              out.Images = append(out.Images, b)
+          }
+      }
+
+(5) nai/sd_cmd.go   FetchImageBase64 改为复用 FetchImageBytes；
+      import 去掉 fmt / io / net/http。
+
+(6) main.go   flag.Float64("strength", 0.28, ...) -> 0.52
+      修复点：main.go 无条件 cfg.Strength = *strength，
+      所以 CLI 路径原先永远 0.28，吃不到 DefaultConfig 的 0.52 修正。
+
+--------------------------------------------------------------------------------
+2. 哈希（sha256 前 16 位）
+--------------------------------------------------------------------------------
+文件                      BASELINE            MODIFIED
+main.go                   8542a2d74f28aeb8    5bf3bc9a2e9ebb2e
+nai/client.go             d00d96703bbdb5f4    b4020a6a9f8a67f3
+nai/ui.go                 872976bf9f453e2f    6915578cdd2200d6
+nai/client_test.go        2407833c001d2bab    a3594eaf0ca5ca2c
+nai/pipeline.go           dfe0af4ede9174a7    4cc2f198cc77544a
+nai/sd_cmd.go             516662c55037061c    ce04b336fa8b2017
+
+repo==MODIFIED_FILE : True
+repo==patch_verify  : True
+
+--------------------------------------------------------------------------------
+3. DIFF 反向重建（DIFF_FILE.patch 从 baseline → MODIFIED）
+--------------------------------------------------------------------------------
+命令: python work\rebuild_key_tx.py  (内置 patch 应用器，逐行校验上下文)
+字面输出:
+  DIFF bytes=4759 files=6 hunks=9 plus=17 minus=28
+  PATCH_APPLY_OK=True files=6 hunks=9
+
+--------------------------------------------------------------------------------
+4. 编译 / 静态检查（4 棵树，全部 exit 0）
+--------------------------------------------------------------------------------
+命令: go build -p 1 -o xianyu-nai.exe .   ;  go test ./nai/ -count=1  ;  go vet ./...  ;  gofmt -l .
+
+  BASELINE  BUILD exit=0 bytes=9993216
+  MODIFIED  BUILD exit=0 bytes=9991168
+  ROLLBACK  BUILD exit=0 bytes=9993216
+
+  repo      test=0 ok xianyu-nai/nai 1.615s  vet=0 gofmt=''
+  BASELINE  test=0 ok xianyu-nai/nai 1.593s  vet=0 gofmt=''
+  MODIFIED  test=0 ok xianyu-nai/nai 1.860s  vet=0 gofmt=''
+  ROLLBACK  test=0 ok xianyu-nai/nai 1.689s  vet=0 gofmt=''
+
+注: 中间曾出现一次 `gofmt -l .` 报 `nai\client.go`（Mode 行注释对齐），
+    已 gofmt -w 修正，上表为修正后重跑结果。
+
+--------------------------------------------------------------------------------
+5. 行为三态：同一个命令、同一份输入
+--------------------------------------------------------------------------------
+5.1 请求体（-dump，反代通道）
+命令:
+  xianyu-nai.exe -prompt "1girl, solo, upper body, white background" \
+    -key nai3-uwYZY... -proxy https://nai.xianyuw.cn \
+    -steps 28 -width 832 -height 1216 -dump
+
+  BASELINE  dump_exit=0  promptGuidanceRescale=5
+  MODIFIED  dump_exit=0  promptGuidanceRescale=0.28
+  ROLLBACK  dump_exit=0  promptGuidanceRescale=5
+
+5.2 请求体（-dump，官方通道 img2img，看 strength 默认值）
+命令:
+  xianyu-nai.exe -prompt "..." -official -official-key pst-dummy \
+    -official-url http://127.0.0.1:1 -model nai-diffusion-4-full \
+    -image C:\Windows\Web\Wallpaper\Windows\img0.jpg -dump
+
+  BASELINE  parameters.strength=0.28
+  MODIFIED  parameters.strength=0.52
+  ROLLBACK  parameters.strength=0.28
+
+5.3 真实出图（走公网反代）
+命令:
+  xianyu-nai.exe -prompt "1girl, solo, upper body, white background" \
+    -key nai3-uwYZY... -proxy https://nai.xianyuw.cn -steps 28 -width 832 -height 1216
+
+  == BASELINE  exit=1  sec=0.8
+     STDERR: 错误: nai错误响应：promptGuidanceRescale不能大于1
+  == MODIFIED  exit=0  sec=15.1
+     STDOUT: seed=1717520987 images=0
+             image_url: https://qnm.hunliji.com/2274ba49_01-13-41-251324-d76e1c2d.png
+  == ROLLBACK  exit=1  sec=0.8
+     STDERR: 错误: nai错误响应：promptGuidanceRescale不能大于1
+
+  （同一事务内另有一次 MODIFIED 复跑：seed=3117240829、
+    image_url=https://qnm.hunliji.com/5a22672b_01-07-22-497166-fb9077e3.png，
+    见 work/key_api_tx/repeat_matrix.txt。两次都 exit=0 且都给了 image_url。）
+
+5.4 OneBot 端到端（假 OneBot 服务端收 /send_group_msg）
+  BASELINE  sec=13.9  segments=['text']          body=83
+            text="画图出错，请重试或联系管理员"
+  MODIFIED  sec=11.3  segments=['text','image']  body=591989
+            text="![nai #832px](https://qnm.hunliji.com/26afaf5f_01-15-43-637869-389d51ac.png)..."
+            image: <image chars=591605 head=base64://iVBORw0KGgoAAAA>
+  ROLLBACK  sec=10.6  segments=['text']          body=83
+            text="画图出错，请重试或联系管理员"
+
+5.5 配置面板（-ui，4 个 /api 端点 + index）
+  BASELINE  http=[/ 200, /api/schema 200, /api/config 200, /api/status 200, /api/presets 200]
+            mode_def=''  mode_opts=['', '官方', '反代']
+            schema_cfg='5'   schema_strength='0.28'
+            ini_cfg='0.28'   ini_strength='0.52'   ini_mode='中转'
+  MODIFIED  http=[全部 200]
+            mode_def='中转'  mode_opts=['', '中转', '官方', '反代']
+            schema_cfg='0.28'  schema_strength='0.52'
+            ini_cfg='0.28'   ini_strength='0.52'   ini_mode='中转'
+  ROLLBACK  http=[全部 200]
+            mode_def=''  mode_opts=['', '官方', '反代']
+            schema_cfg='5'   schema_strength='0.28'
+
+  ← ini 里 模式=中转，BASELINE 的 opts 不含「中转」= 下拉框空白；
+    MODIFIED 的 opts 含「中转」且 def=中转 = 正常显示。这就是 F1 的实测证据。
+
+5.6 稳定性（同一命令连跑 5 次，MODIFIED 产物）
+  run1 exit=0 sec=8.5   seed=1074701727 images=0 + image_url
+  run2 exit=0 sec=6.7   seed=4131877676 images=0 + image_url
+  run3 exit=0 sec=8.8   seed=2184602494 images=0 + image_url
+  run4 exit=0 sec=5.7   seed=2904235447 images=0 + image_url
+  run5 exit=0 sec=7.3   seed=180609852  images=0 + image_url
+  SUCCESS=5/5   （明细 work\key_api_tx\stability_5x.json）
+
+--------------------------------------------------------------------------------
+6. ROLLBACK 实测
+--------------------------------------------------------------------------------
+命令:
+  powershell -ExecutionPolicy Bypass -File work\key_api_tx\ROLLBACK.ps1 -Target work\key_api_tx\rollback_tree
+
+字面输出:
+  restored main.go
+  restored nai\client.go
+  restored nai\ui.go
+  restored nai\client_test.go
+  restored nai\pipeline.go
+  restored nai\sd_cmd.go
+  ROLLBACK_OK
+  ROLLBACK exit=0 all_equal=True
+
+回滚后逐文件哈希 == baseline：
+  main.go              restored==baseline: True  8542a2d74f28aeb8
+  nai/client.go        restored==baseline: True  d00d96703bbdb5f4
+  nai/ui.go            restored==baseline: True  872976bf9f453e2f
+  nai/client_test.go   restored==baseline: True  2407833c001d2bab
+  nai/pipeline.go      restored==baseline: True  dfe0af4ede9174a7
+  nai/sd_cmd.go        restored==baseline: True  516662c55037061c
+
+回滚后的树重新编译 + 重跑同一命令 → 行为回到 BASELINE（见 5.3 / 5.4 / 5.5 的 ROLLBACK 行）。
+回滚后 GOAL 已重新应用到 MODIFIED_FILE（repo == MODIFIED_FILE == patch_verify，三者 sha 一致）。
+
+--------------------------------------------------------------------------------
+7. 边界与未确认项
+--------------------------------------------------------------------------------
+- ROLLBACK.sh 是 POSIX 版；本机无 sh，所以三态回滚实际是用等价 ROLLBACK.ps1 跑的，
+  两者恢复同一批 baseline 字节（脚本逻辑逐行对应）。
+- 官方通道（pst- key → image.novelai.net）未做公网实连；
+  5.2 的 strength 只证明请求体字段值，不证明官方接口可达。
+- 面板下拉框「反代」这一选项在 DLL 里没有独立证据（DLL 只有 中转 / 官方 两个字面串
+  0x102B5C04 / 0x102B5C20），保留它仅为表述习惯，归属「未确认」。

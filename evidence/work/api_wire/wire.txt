@@ -1,0 +1,64 @@
+======================================================================
+CASE proxy_t2i  exit=0
+ARGV -prompt 1girl, solo -key nai-xxxxxxxx -proxy http://127.0.0.1:18731 -model nai-diffusion-3 -seed 123456 -steps 28 -width 832 -height 1216
+STDOUT seed=424242 images=1\n已写入 output.png\n
+STDERR 
+  -> POST /api/generate_image  body_len=453
+     H Content-Length: 453
+     H Accept: application/json
+     H Authorization: Bearer nai-xxxxxxxx
+     H Content-Type: application/json
+     BODY {"model":"nai-diffusion-3","positivePrompt":"1girl, solo","negativePrompt":"lowres, {bad}, error, fewer, extra, missing, worst quality, jpeg artifacts, bad quality, watermark, unfinished, displeasing, chromatic aberration, signature, extra digits, artistic error, username, scan, [abstract]","scale":5,"steps":28,"width":832,"height":1216,"promptGuidanceRescale":5,"noise_schedule":"native","seed":"123456","sampler":"k_euler","sm":false,"sm_dyn":false}
+======================================================================
+CASE official_t2i  exit=0
+ARGV -prompt 1girl, solo -official -official-key pst-xxxxxxxx -official-url http://127.0.0.1:18731 -model nai-diffusion-4-full -seed 8888 -steps 28 -width 832 -height 1216
+STDOUT seed=777001 images=1\n已写入 output.png\n
+STDERR 
+  -> POST /ai/generate-image  body_len=1308
+     H Content-Length: 1308
+     H Accept: application/json
+     H Authorization: Bearer pst-xxxxxxxx
+     H Content-Type: application/json
+     BODY {"input":"","model":"nai-diffusion-4-full","action":"generate","parameters":{"width":"832","height":"1216","scale":5,"sampler":"k_euler","steps":"28","seed":8888,"n_samples":1,"ucPreset":0,"qualityToggle":true,"negative_prompt":"lowres, {bad}, error, fewer, extra, missing, worst quality, jpeg artifacts, bad quality, watermark, unfinished, displeasing, chromatic aberration, signature, extra digits, artistic error, username, scan, [abstract]","cfg_rescale":0,"noise_schedule":"native","dynamic_thresholding":false,"controlnet_strength":1,"legacy":false,"legacy_v3_extend":false,"add_original_image":true,"params_version":3,"use_coords":false,"characterPrompts":[],"v4_prompt":{"caption":{"base_caption":"1girl, solo","char_captions":[]},"use_coords":false,"use_order":true},"v4_negative_prompt":{"caption":{"base_caption":"lowres, {bad}, error, fewer, extra, missing, worst quality, jpeg artifacts, ...[truncated total 1308]
+======================================================================
+CASE official_i2i  exit=0
+ARGV -prompt 1girl, solo -official -official-key pst-xxxxxxxx -official-url http://127.0.0.1:18731 -model nai-diffusion-4-full -seed 8888 -steps 28 -width 832 -height 1216 -image C:\Windows\Web\Wallpaper\Windows\img0.jpg -strength 0.7
+STDOUT seed=777001 images=1\n已写入 output.png\n
+STDERR 
+  -> POST /ai/generate-image  body_len=526158
+     H Content-Length: 526158
+     H Accept: application/json
+     H Authorization: Bearer pst-xxxxxxxx
+     H Content-Type: application/json
+     BODY {"input":"","model":"nai-diffusion-4-full","action":"img2img","parameters":{"width":"832","height":"1216","scale":5,"sampler":"k_euler","steps":"28","seed":8888,"n_samples":1,"ucPreset":0,"qualityToggle":true,"negative_prompt":"lowres, {bad}, error, fewer, extra, missing, worst quality, jpeg artifacts, bad quality, watermark, unfinished, displeasing, chromatic aberration, signature, extra digits, artistic error, username, scan, [abstract]","cfg_rescale":0,"noise_schedule":"native","dynamic_thresholding":false,"controlnet_strength":1,"legacy":false,"legacy_v3_extend":false,"add_original_image":false,"params_version":3,"use_coords":false,"characterPrompts":[],"v4_prompt":{"caption":{"base_caption":"1girl, solo","char_captions":[]},"use_coords":false,"use_order":true},"v4_negative_prompt":{"caption":{"base_caption":"lowres, {bad}, error, fewer, extra, missing, worst quality, jpeg artifacts, ...[truncated total 526158]
+======================================================================
+CASE official_augment  exit=0
+ARGV -augment emotion -augment-image C:\Windows\Web\Wallpaper\Windows\img0.jpg -prompt happy -official-key pst-xxxxxxxx -official-url http://127.0.0.1:18731
+STDOUT seed=777002 images=1\n已写入 output.png\n
+STDERR 
+  -> POST /ai/augment-image  body_len=524927
+     H Content-Length: 524927
+     H Accept: application/json
+     H Authorization: Bearer pst-xxxxxxxx
+     H Content-Type: application/json
+     BODY {"req_type":"emotion","image":"/9j/7gAOQWRvYmUAZMAAAAAB/9sAhAABAQEBAQEBAQEBAgEBAQICAgEBAgICAgICAgICAwIDAwMDAgMDBAQEBAQDBQUFBQUFBwcHBwcICAgICAgICAgIAQEBAQICAgUDAwUHBQQFBwgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAj/wAARCASwB4ADAREAAhEBAxEB/8QA3gAAAwEBAQADAQEAAAAAAAAAAQIDAAQFBggKCQcBAAMBAQEBAQEBAQAAAAAAAAABAgMEBQkGBwgKEAACAQMDAgMFBgUDAgMEABcBAhEAIQMxQRJRImETBHGBkaEy8LHBQiMF0eHxFAZSMwdiCHJDJIKiUxUWFzREGJKy0nMlKDUmNifCY6NUhEVWOBEBAQEBAAEDAgMDBwcHCAMRAAERAiExEgNBBFFhBXETBvCBkaGx0TLBIlKyFBUHQnIzcyQWJuHxYsIjszQl0kNTY8NkdIKSg0RUNTYXoiejhAj/2gAMAwEAAhEDEQA/APDER91f9Fr/AJOK1BgSKABolNpqvcMA09NgxFMWadc7Cnqevjjqx+rcRJkbzVe9h19vFufp8o/Uxi/TajJWXt759Kk37f6bJfFk4E6CpvxRpPu+56xy5f2zOn0jmKzvx10cffcVwtifGYdCtZ2OmfJL6EqVNQZTQYHaiHANMwNIQppqgUjDrRTLQbRNGjcD3aUgMWFI2+xpAImgBFI9YjwiKABj+NIy9aMMKeHC+HXSnht7Nt6eGQ/1pnAOlEhhM+FGKLRhwpB/hTwx49L9KBo8J92vtplocb6/beg9Hj00PWnC1o0O+9MaxGhoOUI987Uxp ...[truncated total 524927]
+======================================================================
+CASE subscription  exit=0
+ARGV -subscription -official-key pst-xxxxxxxx -official-url http://127.0.0.1:18731
+STDOUT ===【NAI 额度信息】===\n账号等级：Opus\n到期时间：2026-12-31T00:00:00Z\n模块训练步数剩余：9500\n已购买 Anlas：1200\nV5 额度：剩余约 54000 张（62.50%）· 每日恢复约 8640 张\n
+STDERR 
+  -> GET /user/subscription  body_len=0
+     H Accept: application/json
+     H Authorization: Bearer pst-xxxxxxxx
+     BODY 
+======================================================================
+CASE nsfw  exit=0
+ARGV -nsfw -image C:\Windows\Web\Wallpaper\Windows\img0.jpg -key nai-xxxxxxxx -plugin-api http://127.0.0.1:18731 -audit-threshold 0.5
+STDOUT 结论=合规 nsfw=0.1200 阈值=0.5\n
+STDERR 
+  -> POST /api/nsfw_check  body_len=74
+     H Content-Length: 74
+     H Accept: application/json
+     H Authorization: Bearer nai-xxxxxxxx
+     H Content-Type: application/json
+     BODY {"type":"api4ai","image":"C:\\Windows\\Web\\Wallpaper\\Windows\\img0.jpg"}

@@ -1,0 +1,8 @@
+no_noise         -> 200 15.6s  {"status":"completed","completed_at":"2026-10-19T22:16:34.552Z","info":{"seed":123456,"positivePrompt":"1girl, solo"},"image_url":"https://qnm.hunliji.com/47892197_22-16-20-807117-3fa05e3d.png"}
+pgr0             -> 200 11.2s  {"status":"completed","completed_at":"2026-10-19T22:16:45.801Z","info":{"seed":123456,"positivePrompt":"1girl, solo"},"image_url":"https://qnm.hunliji.com/8ec427f3_22-16-35-851363-16ac8946.png"}
+pgr1             -> 200 9.0s  {"status":"completed","completed_at":"2026-10-19T22:16:54.797Z","info":{"seed":123456,"positivePrompt":"1girl, solo"},"image_url":"https://qnm.hunliji.com/24248fc8_22-16-47-102506-8830657c.png"}
+pgr0.7           -> 200 11.0s  {"status":"completed","completed_at":"2026-10-19T22:17:05.726Z","info":{"seed":123456,"positivePrompt":"1girl, solo"},"image_url":"https://qnm.hunliji.com/88c956fb_22-16-56-230908-c62c15c8.png"}
+cfg_scale5       -> 200 16.4s  {"status":"completed","completed_at":"2026-10-19T22:17:22.116Z","info":{"seed":123456,"positivePrompt":"1girl, solo"},"image_url":"https://qnm.hunliji.com/86daa367_22-17-07-132657-c54f89e6.png"}
+only_cfg_scale   -> 200 9.7s  {"status":"completed","completed_at":"2026-10-19T22:17:31.814Z","info":{"seed":123456,"positivePrompt":"1girl, solo"},"image_url":"https://qnm.hunliji.com/5b07c7d5_22-17-23-301769-3f6ae9a8.png"}
+seed_int         -> 200 10.0s  {"status":"completed","completed_at":"2026-10-19T22:17:41.807Z","info":{"seed":123456,"positivePrompt":"1girl, solo"},"image_url":"https://qnm.hunliji.com/55fb9161_22-17-33-325000-8fddaa1e.png"}
+steps60          -> 400 1.0s  {"success":false,"error":"Invalid parameters","message":"steps不能大于50","details":"steps不能大于50","missingFields":[]}

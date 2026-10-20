@@ -1,0 +1,26 @@
+[
+  {
+    "tag": "BASELINE",
+    "exe": "build_baseline",
+    "exit": 1,
+    "sec": 0.9,
+    "stdout": "",
+    "stderr": "错误: nai错误响应：promptGuidanceRescale不能大于1"
+  },
+  {
+    "tag": "MODIFIED",
+    "exe": "build_modified",
+    "exit": 0,
+    "sec": 13.0,
+    "stdout": "seed=3117240829 images=0\nimage_url: https://qnm.hunliji.com/5a22672b_01-07-22-497166-fb9077e3.png",
+    "stderr": ""
+  },
+  {
+    "tag": "ROLLBACK",
+    "exe": "rollback_tree",
+    "exit": 1,
+    "sec": 0.8,
+    "stdout": "",
+    "stderr": "错误: nai错误响应：promptGuidanceRescale不能大于1"
+  }
+]

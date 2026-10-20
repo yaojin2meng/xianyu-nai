@@ -1,0 +1,9 @@
+== BASELINE (build_baseline) exit=1 sec=0.9
+   STDOUT: <empty>
+   STDERR: 错误: nai错误响应：promptGuidanceRescale不能大于1
+== MODIFIED (build_modified) exit=0 sec=13.0
+   STDOUT: seed=3117240829 images=0 | image_url: https://qnm.hunliji.com/5a22672b_01-07-22-497166-fb9077e3.png
+   STDERR: <empty>
+== ROLLBACK (rollback_tree) exit=1 sec=0.8
+   STDOUT: <empty>
+   STDERR: 错误: nai错误响应：promptGuidanceRescale不能大于1

@@ -1,0 +1,57 @@
+scale default string               VA 0x102B5AA0 off 0x2B5AA0  [utf-8] 5
+scale key                          VA 0x102BA768 off 0x2BA768  [utf-8] scale
+steps default string               VA 0x1039AB5C off 0x39AB5C  [utf-8] 28
+steps key                          VA 0x102B8334 off 0x2B8334  [utf-8] steps
+width/height default string        VA 0x102B7E7C off 0x2B7E7C  [utf-8] 1024
+cfg default string                 VA 0x1039AC60 off 0x39AC60  [utf-8] 0.28
+promptGuidanceRescale key          VA 0x102BA770 off 0x2BA770  [utf-8] promptGuidanceRescale
+noise_schedule key                 VA 0x102BA788 off 0x2BA788  [utf-8] noise_schedule
+seed key                           VA 0x102B832C off 0x2B832C  [utf-8] seed
+sampler key                        VA 0x102B94E0 off 0x2B94E0  [utf-8] sampler
+sm key                             VA 0x102BA7A8 off 0x2BA7A8  [utf-8] sm
+sm_dyn key                         VA 0x102BA7AC off 0x2BA7AC  [utf-8] sm_dyn
+strength default string            VA 0x1039AB54 off 0x39AB54  [utf-8] 0.52
+strength key                       VA 0x102BA7B4 off 0x2BA7B4  [utf-8] strength
+cfg key                            VA 0x1039AC68 off 0x39AC68  [utf-8] cfg
+Authorization Bearer literal       VA 0x102B8178 off 0x2B8178  [utf-8] Authorization: Bearer 
+multipart boundary                 VA 0x103D0EBC off 0x3D0EBC  [utf-8] --WebKitFormBoundary
+nsfw threshold 0.5                 VA 0x102B8E60 off 0x2B8E60  [utf-8] 0.5
+threshold key                      VA 0x102B8E64 off 0x2B8E64  [gbk] 阈值
+audit fail message                 VA 0x102B8E38 off 0x2B8E38  [gbk] 审核失败，为了安全，强制判定为违规图
+slash                              VA 0x102BA9A0 off 0x2BA9A0  [utf-8] /
+mode default                       VA 0x102B5C04 off 0x2B5C04  [gbk] 中转
+guanfang                           VA 0x102B5C20 off 0x2B5C20  [gbk] 官方
+proxy endpoint                     VA 0x102BA8AC off 0x2BA8AC  [utf-8] /api/generate_image
+official endpoint                  VA 0x102BA9C0 off 0x2BA9C0  [utf-8] /ai/generate-image
+augment endpoint                   VA 0x102BA9A4 off 0x2BA9A4  [utf-8] /ai/augment-image
+subscription endpoint              VA 0x102BB014 off 0x2BB014  [utf-8] /user/subscription
+plugin base                        VA 0x102B8DEC off 0x2B8DEC  [utf-8] nai3_plugin-api
+nai3api                            VA 0x102BA8A4 off 0x2BA8A4  [utf-8] nai3api
+naiofficialapi                     VA 0x102BA98F off 0x2BA98F  [utf-8] naiofficialapi)
+nai3 section                       VA 0x102B5C14 off 0x2B5C14  [gbk] nai3设置
+strength key dup                   VA 0x102BA7B4 off 0x2BA7B4  [utf-8] strength
+template json start                VA 0x102BA5F8 off 0x2BA5F8  [utf-8] {\r\n    "model": "nai-diffusion-3",\r\n    "positivePrompt": "",\r\n    "negativePrompt": "",\r\n    "scale": 5,\r\n    "steps": 28,\r\n    "width": 1024,\r\n 
+
+0.5 exact bytes VA 0x102B8E60 bytes b'\xb9\xe6\xcd\xbc\x00\x00\x00\x000.5\x00\xe3\xd0\xd6\xb5\x00\x00\x00\x00baidu\x00\x00\x00imgUrl\x00\x00result.concl'
+
+boundary exact bytes VA 0x103D0EBC bytes b'--\r\n\x00\x00\x00\x00--WebKitFormBoundary\x00\x00\x00\x00"\r\n\x00Content-Disp'
+
+--- around 0x2B8E20-0x2B8EA0 with offsets ---
+  0x2B8E20 VA 0x102B8E20 [utf-8] ntities[0].classes.nsfw
+  0x2B8E38 VA 0x102B8E38 [gbk] 审核失败，为了安全，强制判定为违规图
+  0x2B8E60 VA 0x102B8E60 [utf-8] 0.5
+  0x2B8E64 VA 0x102B8E64 [gbk] 阈值
+  0x2B8E6C VA 0x102B8E6C [utf-8] baidu
+  0x2B8E74 VA 0x102B8E74 [utf-8] imgUrl
+  0x2B8E7C VA 0x102B8E7C [utf-8] result.conclusion
+  0x2B8E90 VA 0x102B8E90 [gbk] 合规
+  0x2B8E98 VA 0x102B8E98 [gbk] 不合规
+  0x2B8EA0 VA 0x102B8EA0 [utf-8] baiduai
+  0x2B8EA8 VA 0x102B8EA8 [utf-8] result.a
+
+--- around 0x3D0EA0-0x3D0EE0 ---
+  0x3D0EA0 VA 0x103D0EA0 b'X-Forwarded-For:'
+  0x3D0EB4 VA 0x103D0EB4 b'--\r\n'
+  0x3D0EBC VA 0x103D0EBC b'--WebKitFormBoundary'
+  0x3D0ED4 VA 0x103D0ED4 b'"\r\n'
+  0x3D0ED8 VA 0x103D0ED8 b'Content-Disposition: for'

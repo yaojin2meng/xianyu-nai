@@ -1,0 +1,11 @@
+[
+  {
+    "api": "/send_group_msg",
+    "group": 987654321,
+    "segments": [
+      "text",
+      "image"
+    ],
+    "content": "![nai #832px](https://qnm.hunliji.com/f67b88f8_22-30-03-600226-56ac3a6f.png)\n\n\n\n---\n\n### 模型:\nnai-diffusion-3\n### 噪声调度:\nnative**\n### 采样方式:\nk_euler\n```\n\n### seed:**\n2592392268\n\n```markdown\n](mqqapi://aio/inlinecmd?command=咸鱼ai画图&reply=false&enter=false) | <image bytes=681357 sha_head=base64://iVBORw0KGgoAAAA>"
+  }
+]

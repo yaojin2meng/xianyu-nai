@@ -1,0 +1,27 @@
+### URL 字面量 ###
+0x2b6ac4  http://xianyu.render/render_temp.html?r=
+0x2b7744  ![img #28px #28px](https://q1.qlogo.cn/g?b=qq&nk=
+0x2b875c  ","data":"https://gchat.qpic.cn/gchatpic_new/0/0-0-95EDECA936FD9CE2A03ECCCE73A4EABB/0","reply":0,"enter":1,"blue":1}]]
+0x2b8b88  https://q1.qlogo.cn/g?b=qq&nk=
+0x2b90b8  https://ci-exhibition.cloud.tencent.com/sts?prefix=users%2F
+0x2b90f4  https://ci-h5-demo-1258125638.cos.ap-chengdu.myqcloud.com/users/
+0x391b18  <assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0"><application xmlns="urn:schemas-microsoft-com:asm.v3"><windowsSettings><dpiAware xmlns="http://schemas.microsoft.com/SMI/2005/WindowsSettings">true</dpiAware></windowsSettings></application></assembly>
+0x399f3c  https://go.microsoft.com/fwlink/p/?LinkId=2124703
+0x39a1b0  http://xianyu.ui/index.html?r=
+0x39a298  http://xianyu.ui/index.html
+0x39b1ac  http://xianyu.xianyuw.cn/json.php
+0x39c580  https://
+0x39c58c  http://
+0x3d2f1c  https://res.xianyuw.cn/plug/chatai/ai_studio/QQCharacterTts/?content=
+0x3d3408  https://gchat.qpic.cn/gchatpic_new/0/0-0-
+
+### 域名候选 ###
+0x2b7744  q1.qlogo.cn
+0x2b875c  gchat.qpic.cn
+0x2b90b8  ci-exhibition.cloud.tencent.com
+0x2b90f4  ci-h5-demo-1258125638.cos.ap-chengdu.myqcloud.com
+0x391b18  schemas.microsoft.com
+0x399f3c  go.microsoft.com
+0x39b1ac  xianyu.xianyuw.cn
+0x3d2f1c  res.xianyuw.cn
+0x3d3b8c  ntp.ntsc.ac.cn

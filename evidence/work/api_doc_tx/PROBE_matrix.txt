@@ -1,0 +1,47 @@
+== BASELINE  exit=5
+RESULT=DOC_PRESENT
+BYTES=20716
+SHA256=e1d9b24fd0ffac5f48703fa9f2d9ea8df07d037059ccd062b029301d50977cf5
+C1_baidu_field_imgUrl=FAIL
+C2_no_wrong_six_float=PASS
+C3_timeout_line_129=FAIL
+C4_latency_range=FAIL
+C5_two_hardcoded_domains=FAIL
+C6_augment_six_fields=FAIL
+C7_pseudo_exit0=FAIL
+C8_reprint_note_src=FAIL
+C9_status_code_wording=FAIL
+PASS=1/9
+ALL_CHECKS_PASS=False
+
+== MODIFIED  exit=0
+RESULT=DOC_PRESENT
+BYTES=26510
+SHA256=724de3f2d871fc64110919a35385e347d35098292c7b6e4ec8e9d7326efd87d0
+C1_baidu_field_imgUrl=PASS
+C2_no_wrong_six_float=PASS
+C3_timeout_line_129=PASS
+C4_latency_range=PASS
+C5_two_hardcoded_domains=PASS
+C6_augment_six_fields=PASS
+C7_pseudo_exit0=PASS
+C8_reprint_note_src=PASS
+C9_status_code_wording=PASS
+PASS=9/9
+ALL_CHECKS_PASS=True
+
+== ROLLBACK  exit=5
+RESULT=DOC_PRESENT
+BYTES=20716
+SHA256=e1d9b24fd0ffac5f48703fa9f2d9ea8df07d037059ccd062b029301d50977cf5
+C1_baidu_field_imgUrl=FAIL
+C2_no_wrong_six_float=PASS
+C3_timeout_line_129=FAIL
+C4_latency_range=FAIL
+C5_two_hardcoded_domains=FAIL
+C6_augment_six_fields=FAIL
+C7_pseudo_exit0=FAIL
+C8_reprint_note_src=FAIL
+C9_status_code_wording=FAIL
+PASS=1/9
+ALL_CHECKS_PASS=False

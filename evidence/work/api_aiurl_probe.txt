@@ -1,0 +1,11 @@
+GET (dir)                    -> ERR 403 HTTP Error 403: Forbidden
+GET index.html               -> ERR 404 HTTP Error 404: Not Found
+GET index.php                -> ERR 404 HTTP Error 404: Not Found
+GET ./nai3api.json           -> 200 b'1'
+GET nai3api.json.bak         -> ERR 404 HTTP Error 404: Not Found
+GET nai3api.json.bak1        -> ERR 404 HTTP Error 404: Not Found
+GET nai3api.json.old         -> ERR 404 HTTP Error 404: Not Found
+GET nai3api.json~            -> ERR 404 HTTP Error 404: Not Found
+GET nai3api.json.swp         -> ERR 404 HTTP Error 404: Not Found
+GET ../aiurl/nai3api.json    -> 200 b'1'
+GET bak/nai3api.json         -> ERR 404 HTTP Error 404: Not Found

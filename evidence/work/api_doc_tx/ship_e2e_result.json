@@ -1,0 +1,41 @@
+[
+  {
+    "i": 1,
+    "sec": 11.9,
+    "segments": [
+      "text",
+      "image"
+    ],
+    "raw_body_len": 571357,
+    "api": "/send_group_msg",
+    "image_chars": 570973,
+    "image_head": "base64://iVBORw0KGgoAAAANSUhEUgA",
+    "text_head": "![nai #832px](https://qnm.hunliji.com/27d44dc8_01-24-39-071597-685d0323.png)\n\n\n\n---\n\n### 模型:\nnai-diffusion-3\n### 噪声调度:\nnative**\n### 采样方式:\nk_euler\n```\n\n### seed:"
+  },
+  {
+    "i": 2,
+    "sec": 10.8,
+    "segments": [
+      "text",
+      "image"
+    ],
+    "raw_body_len": 684981,
+    "api": "/send_group_msg",
+    "image_chars": 684597,
+    "image_head": "base64://iVBORw0KGgoAAAANSUhEUgA",
+    "text_head": "![nai #832px](https://qnm.hunliji.com/6a346525_01-24-52-977587-81266630.png)\n\n\n\n---\n\n### 模型:\nnai-diffusion-3\n### 噪声调度:\nnative**\n### 采样方式:\nk_euler\n```\n\n### seed:"
+  },
+  {
+    "i": 3,
+    "sec": 9.9,
+    "segments": [
+      "text",
+      "image"
+    ],
+    "raw_body_len": 825313,
+    "api": "/send_group_msg",
+    "image_chars": 824929,
+    "image_head": "base64://iVBORw0KGgoAAAANSUhEUgA",
+    "text_head": "![nai #832px](https://qnm.hunliji.com/dff4a10f_01-25-05-703436-7c33b133.png)\n\n\n\n---\n\n### 模型:\nnai-diffusion-3\n### 噪声调度:\nnative**\n### 采样方式:\nk_euler\n```\n\n### seed:"
+  }
+]

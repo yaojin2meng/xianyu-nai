@@ -1,0 +1,15 @@
+# 编译产物
+*.exe
+*.test
+*.dll
+*.out
+
+# 运行数据（含真实 key，勿提交）
+/run/
+/user_cache.ini
+
+# 编辑器 / 系统
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini

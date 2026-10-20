@@ -1,0 +1,9 @@
+{
+  "pre": "e52ac0d387395559292678950fffdf67d034eb9e34d12cdc2369970c7800d7d9",
+  "post": "83dfb94ad5f146b2999430b2ea367bd8b8e1db92f7c739fa6f2079bd6bfd06b7",
+  "rollback_exit": 0,
+  "post_eq_baseline": true,
+  "patch_apply_ok": true,
+  "modified_sha": "e52ac0d387395559292678950fffdf67d034eb9e34d12cdc2369970c7800d7d9",
+  "modified_bytes": 26608
+}

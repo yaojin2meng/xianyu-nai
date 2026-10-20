@@ -1,0 +1,52 @@
+=== region 0x2BA560..0x2BA700 ===
+'\x00\x00\x00\x00\x00\x00P@\x01\x00\x00\x00N\x00\x00\x00{\x005\x005\x007\x00C\x00F\x004\x000\x006\x00-\x001\x00A\x000\x004\x00-\x001\x001\x00D\x003\x00-\x009\x00A\x007\x003\x00-\x000\x000\x000\x000\x00F\x008\x001\x00E\x00F\x003\x002\x00E\x00}\x00\x00\x00\x00\x00ÅÅ¶ÓÈËÊý¹ý¶à£¬ÇëµÈ´ý3·ÖÖÓºóÔÙÊÔ\x00ÕýÔÚÅÅ¶ÓÖÐ£¬µ±Ç°ÈËÊý:\x00\x00\x00{\r\n    "model": "nai-diffusion-3",\r\n    "positivePrompt": "",\r\n    "negativePrompt": "",\r\n    "scale": 5,\r\n    "steps": 28,\r\n    "width": 1024,\r\n    "height": 1024,\r\n    "promptGuidanceRescale": 0,\r\n    "noise_schedule": "native",\r\n    "seed": "303741420",\r\n    "s'
+
+=== search 'positivePrompt' occurrences ===
+off=0x2BA621 VA=0x102BA621
+off=0x2BA748 VA=0x102BA748
+off=0x2BA919 VA=0x102BA919
+
+=== look for template start before 0x2BA69E ===
+last '{' before 0x2BA6A0 at 0x2BA5F8
+'{\r\n    "model": "nai-diffusion-3",\r\n    "positivePrompt": "",\r\n    "negativePrompt": "",\r\n    "scale": 5,\r\n    "steps": '
+
+=== double at VA 0x102B7FA8 (off 0x2B7FA8) ===
+bytes=48afbc9af2d77abe
+as double little-endian = -1e-07
+as float  little-endian = -7.803815971229722e-23
+  0x2B7F90: a4bcc6d0e8d2aa31  dbl=1.943266503525896e-69
+  0x2B7F98: b7d6d6d300000000  dbl=1.755945e-314
+  0x2B7FA0: 0000000000c07240  dbl=300.0
+  0x2B7FA8: 48afbc9af2d77abe  dbl=-1e-07
+  0x2B7FB0: b5e3cafdb2bbd7e3  dbl=-9.171784171584368e+172
+  0x2B7FB8: 00000000b5b1c7b0  dbl=-1.0476893665539305e-73
+  0x2B7FC0: bbadcdbcb5e3cafd  dbl=-8.792822861975115e+297
+
+=== strings near 0x2B8E20..0x2B8EA0 ===
+'ntities[0].classes.nsfw\x00���ʧ�ܣ�Ϊ�˰�ȫ��ǿ���ж�ΪΥ��ͼ\x00\x00\x00\x000.5\x00��ֵ\x00\x00\x00\x00baidu\x00\x00\x00imgUrl\x00\x00result.conclusion\x00\x00\x00�Ϲ�\x00\x00\x00\x00���Ϲ�\x00\x00'
+
+=== near 0x3D0EBC ===
+'\r\nCLIENT_IP:\x00\x00\x00\x00X-Forwarded-For:\x00\x00\x00\x00--\r\n\x00\x00\x00\x00--WebKitFormBoundary\x00\x00\x00\x00"\r\n\x00Content-Disposition: form-data; name="\x00\x00encodeURI\x00\x00\x00enco'
+/api/nsfw_check                          -> off=0x2B8DFC VA=0x102B8DFC
+/api/superResolution_image               -> off=0x39CB8C VA=0x1039CB8C
+/api/remove_background                   -> off=0x39CBA8 VA=0x1039CBA8
+/api/tagger                              -> off=0x2BBE34 VA=0x102BBE34
+/api/image-metadata                      -> off=0x2BBCF8 VA=0x102BBCF8
+/api/v1/tag-translate                    -> off=0x2B8134 VA=0x102B8134
+/api/v1/youdao-translate                 -> off=0x2B8204 VA=0x102B8204
+/plug/AI/v1/upload_image/upload.php      -> off=0x2B94F4 VA=0x102B94F4
+/plug/AI/upload-image                    -> NOT FOUND
+/user/subscription                       -> off=0x2BB014 VA=0x102BB014
+/ai/augment-image                        -> off=0x2BA9A4 VA=0x102BA9A4
+
+=== ini strings ===
+b'nai3\xe8\xae\xbe\xe7\xbd\xae' -> NOT FOUND
+b'nai3\xe5\x8f\x82\xe6\x95\xb0' -> NOT FOUND
+b'nai3\xe6\x8c\x87\xe4\xbb\xa4' -> NOT FOUND
+b'\xe9\x87\x8d\xe5\x88\xb6\xe7\x89\x88' -> NOT FOUND
+b'nai3api'                     -> ['0x102BA8A4']
+b'naiofficialapi'              -> ['0x102BA98F']
+b'\xe5\x85\xa8\xe5\xb1\x80\xe9\xbb\x98\xe8\xae\xa4\xe6\xa8\xa1\xe5\x9e\x8b' -> NOT FOUND
+b'\xe8\xb4\x9f\xe9\x9d\xa2\xe8\xaf\x8d\xe6\x9d\xa1' -> NOT FOUND
+b'strength'                    -> ['0x102B8382', '0x102B850D', '0x102BA7B4', '0x102BA822', '0x102BAB3A', '0x102BADC1']
+b'cfg'                         -> ['0x102B82A8', '0x102B833C', '0x102B84AB', '0x102BAADB', '0x103776C7', '0x1039AC68']

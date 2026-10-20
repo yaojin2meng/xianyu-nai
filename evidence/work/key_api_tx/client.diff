@@ -1,0 +1,20 @@
+--- a/nai/client.go
++++ b/nai/client.go
+@@ -90,7 +90,7 @@
+ 		Mode:      "",
+ 		Model:     "nai-diffusion-3", // 反代模板默认模型
+ 		Scale:     5,                 // 模板 "scale": 5
+-		Cfg:       5,                 // naiCfg 默认 5
++		Cfg:       0.28,              // nai3参数/cfg 默认 "0.28"（0x100A4282 → 0x1039AC60）
+ 		Steps:     28,
+ 		Sampler:   "k_euler",
+ 		Noise:     "native",
+@@ -99,7 +99,7 @@
+ 		Seed:      -1,
+ 		Width:     1024,
+ 		Height:    1024,
+-		Strength:  0.28, // naiStrength 默认段
++		Strength:  0.52, // nai3参数/strength 默认 "0.52"（0x100A433D → 0x1039AB54）
+ 		Negative:  DefaultNegative,
+ 		TimeoutMS: 300000,
+ 		SD:        DefaultSDConfig(),

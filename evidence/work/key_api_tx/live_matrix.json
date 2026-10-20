@@ -1,0 +1,16 @@
+[
+  {
+    "tag": "BASELINE",
+    "exit": 1,
+    "sec": 0.4,
+    "stdout": "",
+    "stderr": "错误: nai错误响应：promptGuidanceRescale不能大于1"
+  },
+  {
+    "tag": "MODIFIED",
+    "exit": 0,
+    "sec": 9.4,
+    "stdout": "seed=3064907154 images=0\nimage_url: https://qnm.hunliji.com/bc2de85b_22-32-59-098386-c9902ab4.png",
+    "stderr": ""
+  }
+]

@@ -1,0 +1,14 @@
+POST name=nai3api          -> 200 {"code":1,"msg":"data 参数不能为空","data":[]}
+POST name=nai3api          data=1 -> 200 {"code":0,"msg":"操作成功","data":{"filename":"nai3api.json","filepath":".\/aiurl\/nai3api.json","filesize":1,"decoded_data_preview":"1"}}
+POST name=naiofficialapi   -> 200 {"code":1,"msg":"data 参数不能为空","data":[]}
+POST name=naiofficialapi   data=1 -> 200 {"code":0,"msg":"操作成功","data":{"filename":"naiofficialapi.json","filepath":".\/aiurl\/naiofficialapi.json","filesize":1,"decoded_data_preview":"1"}}
+POST name=nai3_plugin-api  -> 200 {"code":1,"msg":"data 参数不能为空","data":[]}
+POST name=nai3_plugin-api  data=1 -> 200 {"code":0,"msg":"操作成功","data":{"filename":"nai3_plugin-api.json","filepath":".\/aiurl\/nai3_plugin-api.json","filesize":1,"decoded_data_preview":"1"}}
+POST name=url              -> 200 {"code":1,"msg":"data 参数不能为空","data":[]}
+POST name=url              data=1 -> 200 {"code":0,"msg":"操作成功","data":{"filename":"url.json","filepath":".\/aiurl\/url.json","filesize":1,"decoded_data_preview":"1"}}
+POST name=资源地址             -> None URLError  <urlopen error _ssl.c:1015: The handshake operation timed out>
+POST name=资源地址             data=1 -> 200 {"code":0,"msg":"操作成功","data":{"filename":"资源地址.json","filepath":".\/aiurl\/资源地址.json","filesize":1,"decoded_data_preview":"1"}}
+POST name=咸鱼ai画图           -> 200 {"code":1,"msg":"data 参数不能为空","data":[]}
+POST name=咸鱼ai画图           data=1 -> 200 {"code":0,"msg":"操作成功","data":{"filename":"咸鱼ai画图.json","filepath":".\/aiurl\/咸鱼ai画图.json","filesize":1,"decoded_data_preview":"1"}}
+POST name=nai3             -> 200 {"code":1,"msg":"data 参数不能为空","data":[]}
+POST name=nai3             data=1 -> 200 {"code":0,"msg":"操作成功","data":{"filename":"nai3.json","filepath":".\/aiurl\/nai3.json","filesize":1,"decoded_data_preview":"1"}}

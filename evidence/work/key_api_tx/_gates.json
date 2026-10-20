@@ -1,0 +1,34 @@
+{
+  "repo": {
+    "test_exit": 0,
+    "test_tail": [
+      "ok  \txianyu-nai/nai\t1.615s"
+    ],
+    "vet_exit": 0,
+    "gofmt": ""
+  },
+  "BASELINE": {
+    "test_exit": 0,
+    "test_tail": [
+      "ok  \txianyu-nai/nai\t1.593s"
+    ],
+    "vet_exit": 0,
+    "gofmt": ""
+  },
+  "MODIFIED": {
+    "test_exit": 0,
+    "test_tail": [
+      "ok  \txianyu-nai/nai\t1.860s"
+    ],
+    "vet_exit": 0,
+    "gofmt": ""
+  },
+  "ROLLBACK": {
+    "test_exit": 0,
+    "test_tail": [
+      "ok  \txianyu-nai/nai\t1.689s"
+    ],
+    "vet_exit": 0,
+    "gofmt": ""
+  }
+}

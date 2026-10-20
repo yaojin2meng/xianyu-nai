@@ -1,0 +1,2 @@
+b'{"status":"completed","completed_at":"2026-10-19T22:13:01.240Z","info":{"seed":1234567890,"positivePrompt":"1girl, solo, simple background"},"image_url":"https://qnm.hunliji.com/b6bbb0ac_22-12-53-794862-f1257ce9.png"}'
+{"status":"completed","completed_at":"2026-10-19T22:13:01.240Z","info":{"seed":1234567890,"positivePrompt":"1girl, solo, simple background"},"image_url":"https://qnm.hunliji.com/b6bbb0ac_22-12-53-794862-f1257ce9.png"}

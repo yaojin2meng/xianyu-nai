@@ -1,0 +1,15 @@
+GET /api/status              -> 200  {"success":true,"data":{"timestamp":"2026-10-19T22:19:04.678Z","uptime":3286808.049455594,"memory":{"used":25,"total":30},"apis":{"shared":{"status":"degraded","available":0,"total":0,"utilization":0},"private":{"status":"degraded","available":0,"total":0,"utilization":0},"official":{"status":"healt
+GET /api/status/detailed     -> 200  {"success":true,"data":{"shared":{"keys":[],"available":0,"total":0},"private":{"accounts":[],"available":0,"total":0,"accessTokens":[{"id":"token_0","token":"STD-SYe7Rx...SYFNiZ","status":"active"},{"id":"token_1","token":"STD-xbtS80...juHPzA","status":"active"}],"accessTokenCount":2},"timestamp":"
+GET /api/config              -> 200  {"success":true,"data":{"config":{"server":{"port":9001,"host":"0.0.0.0","frontend":{"port":9002}},"apis":{"shared":{"endpoint":"https://image.idlecloud.cc/api","keys":[],"keyCount":0,"lockDuration":10000},"private":{"endpoint":"https://std.loliyc.com/api","accounts":[],"accountCount":0},"official":
+GET /api/models              -> 200  [HTML SPA fallback]
+GET /api/keys                -> 200  [HTML SPA fallback]
+GET /api/user/info           -> 200  [HTML SPA fallback]
+GET /api/user/balance        -> 200  [HTML SPA fallback]
+GET /api/user/quota          -> 200  [HTML SPA fallback]
+GET /api/quota               -> 200  [HTML SPA fallback]
+GET /api/balance             -> 200  [HTML SPA fallback]
+GET /api/logs                -> 200  {"success":true,"data":{"logs":[{"id":"req_1792419452778_z5lvdqrpr","timestamp":"2026-10-19 22:17:32","client_ip":"::ffff:127.0.0.1","user_request_headers":{"host":"nai.xianyuw.cn:443","x-real-ip":"154.36.163.117","x-forwarded-for":"183.146.215.73, 154.36.163.117","remote-host":"154.36.163.117","x-h
+GET /api/pricing             -> 200  [HTML SPA fallback]
+GET /api/docs                -> 200  [HTML SPA fallback]
+GET /api/keys/info           -> 200  [HTML SPA fallback]
+GET /api/auth/verify         -> -1   

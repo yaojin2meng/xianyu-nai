@@ -1,0 +1,43 @@
+--- Mode_guanfang    VA 0x1005E3F3 (off 0x5E3F3)
+    VA 0x1005E3F3  cmp      eax, 0
+    VA 0x1005E3F6  mov      eax, 0
+    VA 0x1005E3FB  sete     al
+    VA 0x1005E3FE  mov      dword ptr [ebp - 0xd4], eax
+    VA 0x1005E404  mov      ebx, dword ptr [ebp - 0xd0]
+--- proxy_join       VA 0x1005E4F3 (off 0x5E4F3)
+    VA 0x1005E4F3  push     0x102ba8ac
+    VA 0x1005E4F8  push     dword ptr [ebp - 0xd4]
+    VA 0x1005E4FE  mov      ecx, 2
+--- official_joinA   VA 0x10063D4B (off 0x63D4B)
+    VA 0x10063D4B  je       0x10063de3
+    VA 0x10063D51  push     0x80000004
+    VA 0x10063D56  push     0
+    VA 0x10063D58  mov      eax, dword ptr [ebp - 0x54]
+    VA 0x10063D5B  test     eax, eax
+    VA 0x10063D5D  jne      0x10063d64
+--- official_joinB   VA 0x100637F7 (off 0x637F7)
+    VA 0x100637F7  je       0x1006388f
+    VA 0x100637FD  push     0x80000004
+    VA 0x10063802  push     0
+    VA 0x10063804  mov      eax, dword ptr [ebp - 0x54]
+    VA 0x10063807  test     eax, eax
+    VA 0x10063809  jne      0x10063810
+--- pgr_inject       VA 0x1005CAD6 (off 0x5CAD6)
+    VA 0x1005CAD6  mov      eax, 0x102ba770
+    VA 0x1005CADB  mov      dword ptr [ebp - 0xd8], eax
+    VA 0x1005CAE1  lea      eax, [ebp - 0xd8]
+    VA 0x1005CAE7  push     eax
+--- nsfw_cmp         VA 0x1002E4CB (off 0x2E4CB)
+    VA 0x1002E4CB  fld      qword ptr [ebp - 0x70]
+    VA 0x1002E4CE  fsub     qword ptr [ebp - 0x80]
+    VA 0x1002E4D4  fcomp    qword ptr [0x102b7fa8]
+    VA 0x1002E4DA  fnstsw   ax
+    VA 0x1002E4DC  test     ah, 1
+--- cfg_read         VA 0x100A4282 (off 0xA4282)
+    VA 0x100A4282  call     0x101c6447
+    VA 0x100A4287  add      esp, 0x34
+    VA 0x100A428A  mov      dword ptr [ebp - 0x24], eax
+    VA 0x100A428D  mov      ebx, dword ptr [ebp - 0x20]
+    VA 0x100A4290  test     ebx, ebx
+    VA 0x100A4292  je       0x100a429d
+    VA 0x100A4294  push     ebx

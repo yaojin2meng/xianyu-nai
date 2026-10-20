@@ -1,0 +1,22 @@
+[
+  {
+    "tag": "BASELINE",
+    "exit": 0,
+    "sec": 0.0,
+    "stdout": "{\n  \"model\": \"nai-diffusion-3\",\n  \"positivePrompt\": \"1girl, solo, upper body, white background\",\n  \"negativePrompt\": \"lowres, {bad}, error, fewer, extra, missing, worst quality, jpeg artifacts, bad quality, watermark, unfinished, displeasing, chromatic aberration, signature, extra digits, artistic error, username, scan, [abstract]\",\n  \"scale\": 5,\n  \"steps\": 28,\n  \"width\": 832,\n  \"height\": 1216,\n  \"promptGuidanceRescale\": 5,\n  \"noise_schedule\": \"native\",\n  \"seed\": \"-1\",\n  \"sampler\": \"k_euler\",\n  \"sm\": false,\n  \"sm_dyn\": false\n}",
+    "stderr": "",
+    "dump_len": 0,
+    "promptGuidanceRescale": "<unparsed>",
+    "body_head": ""
+  },
+  {
+    "tag": "MODIFIED",
+    "exit": 0,
+    "sec": 0.0,
+    "stdout": "{\n  \"model\": \"nai-diffusion-3\",\n  \"positivePrompt\": \"1girl, solo, upper body, white background\",\n  \"negativePrompt\": \"lowres, {bad}, error, fewer, extra, missing, worst quality, jpeg artifacts, bad quality, watermark, unfinished, displeasing, chromatic aberration, signature, extra digits, artistic error, username, scan, [abstract]\",\n  \"scale\": 5,\n  \"steps\": 28,\n  \"width\": 832,\n  \"height\": 1216,\n  \"promptGuidanceRescale\": 0.28,\n  \"noise_schedule\": \"native\",\n  \"seed\": \"-1\",\n  \"sampler\": \"k_euler\",\n  \"sm\": false,\n  \"sm_dyn\": false\n}",
+    "stderr": "",
+    "dump_len": 0,
+    "promptGuidanceRescale": "<unparsed>",
+    "body_head": ""
+  }
+]

@@ -1,0 +1,45 @@
+[
+  {
+    "tag": "BASELINE",
+    "sec": 13.9,
+    "calls": [
+      {
+        "api": "/send_group_msg",
+        "segments": [
+          "text"
+        ],
+        "text": "画图出错，请重试或联系管理员",
+        "raw_body_len": 83
+      }
+    ]
+  },
+  {
+    "tag": "MODIFIED",
+    "sec": 11.3,
+    "calls": [
+      {
+        "api": "/send_group_msg",
+        "segments": [
+          "text",
+          "image"
+        ],
+        "text": "![nai #832px](https://qnm.hunliji.com/26afaf5f_01-15-43-637869-389d51ac.png)\n\n\n\n---\n\n### 模型:\nnai-diffusion-3\n### 噪声调度:\nnative**\n### 采样方式:\nk_euler\n```\n\n### seed:**\n3849417409\n\n```markdown\n](mqqapi://aio/inlinecmd?command=咸鱼ai画图&reply=false&enter=false) | <image chars=591605 head=base64://iVBORw0KGgoAAAA>",
+        "raw_body_len": 591989
+      }
+    ]
+  },
+  {
+    "tag": "ROLLBACK",
+    "sec": 10.6,
+    "calls": [
+      {
+        "api": "/send_group_msg",
+        "segments": [
+          "text"
+        ],
+        "text": "画图出错，请重试或联系管理员",
+        "raw_body_len": 83
+      }
+    ]
+  }
+]

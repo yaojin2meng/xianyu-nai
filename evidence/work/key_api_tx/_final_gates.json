@@ -1,0 +1,24 @@
+{
+  "diff_ok": true,
+  "rollback": {
+    "exit": 0,
+    "all_equal": true
+  },
+  "build": {
+    "BASELINE": {
+      "exit": 0,
+      "err": "",
+      "bytes": 9993216
+    },
+    "MODIFIED": {
+      "exit": 0,
+      "err": "",
+      "bytes": 9991168
+    },
+    "ROLLBACK": {
+      "exit": 0,
+      "err": "",
+      "bytes": 9993216
+    }
+  }
+}

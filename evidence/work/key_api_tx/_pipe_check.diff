@@ -1,0 +1,17 @@
+--- baseline
++++ modified
+@@ -133,6 +133,14 @@
+ 		}
+ 		out.Images = append(out.Images, b)
+ 	}
++	// 8.1 反代只给 image_url、不给 base64 时（如 nai.xianyuww.cn / nai.xianyuw.cn），
++	// 需要把直链下载回来，否则下游按"没出图"处理。
++	if len(out.Images) == 0 && strings.TrimSpace(out.ImageURL) != "" {
++		if b, err := c2.FetchImageBytes(ctx, out.ImageURL); err == nil && len(b) > 0 {
++			out.Images = append(out.Images, b)
++		}
++	}
++
+ 	// 8.5 图片直链：反代通道若没给 image_url，就把图传到上传接口换直链。
+ 	// 对应 0x1005F0C2-0x1005F100：成员("image_url") 为空 -> 分支到 0x1005F1D4 上传。
+ 	if out.ImageURL == "" && len(out.Images) > 0 {

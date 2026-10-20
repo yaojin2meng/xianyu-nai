@@ -1,0 +1,124 @@
+--- a/main.go
++++ b/main.go
+@@ -34,7 +34,7 @@
+ 		sampler   = flag.String("sampler", "k_euler", "采样器")
+ 		noise     = flag.String("noise", "native", "噪声调度")
+ 		seed      = flag.Int64("seed", -1, "种子，-1=随机")
+-		strength  = flag.Float64("strength", 0.28, "img2img 重绘幅度")
++		strength  = flag.Float64("strength", 0.52, "img2img 重绘幅度")
+ 		imgPath   = flag.String("image", "", "img2img 底图路径")
+ 		augment   = flag.String("augment", "", "导演工具：emotion|declutter|colorize|sketch|lineart")
+ 		augImg    = flag.String("augment-image", "", "导演工具原图路径")
+--- a/nai/client.go
++++ b/nai/client.go
+@@ -87,10 +87,10 @@
+ // DefaultConfig 返回插件初始化时写入的默认配置。
+ func DefaultConfig() Config {
+ 	return Config{
+-		Mode:      "",
++		Mode:      "中转",              // 0x100A4051 读 [nai3设置] 模式，默认串 0x102B5C04 = "中转"
+ 		Model:     "nai-diffusion-3", // 反代模板默认模型
+ 		Scale:     5,                 // 模板 "scale": 5
+-		Cfg:       5,                 // naiCfg 默认 5
++		Cfg:       0.28,              // nai3参数/cfg 默认 "0.28"（0x100A4282 → 0x1039AC60）
+ 		Steps:     28,
+ 		Sampler:   "k_euler",
+ 		Noise:     "native",
+@@ -99,7 +99,7 @@
+ 		Seed:      -1,
+ 		Width:     1024,
+ 		Height:    1024,
+-		Strength:  0.28, // naiStrength 默认段
++		Strength:  0.52, // nai3参数/strength 默认 "0.52"（0x100A433D → 0x1039AB54）
+ 		Negative:  DefaultNegative,
+ 		TimeoutMS: 300000,
+ 		SD:        DefaultSDConfig(),
+--- a/nai/ui.go
++++ b/nai/ui.go
+@@ -272,7 +272,7 @@
+ 			Name: "nai3设置", Desc: "NovelAI 接入参数",
+ 			RVA: "0x102B5C14",
+ 			Fields: []UIField{
+-				sel("模式", "模式（官方 / 反代）", "", "", "官方", "反代"),
++				sel("模式", "模式（官方 / 反代）", "中转", "", "中转", "官方", "反代"),
+ 				sec("key", "反代 Key", ""),
+ 				sec("官方key", "官方 Key", ""),
+ 			},
+@@ -283,8 +283,8 @@
+ 			Fields: []UIField{
+ 				num("scale", "CFG Scale", "5"),
+ 				num("steps", "步数", "28"),
+-				num("cfg", "CFG", "5"),
+-				num("strength", "重绘强度", "0.28"),
++				num("cfg", "CFG", "0.28"),
++				num("strength", "重绘强度", "0.52"),
+ 				txt("默认种子", "默认种子（-1 随机）", "-1"),
+ 				num("宽度", "宽度", "1024"),
+ 				num("高度", "高度", "1024"),
+--- a/nai/client_test.go
++++ b/nai/client_test.go
+@@ -15,7 +15,7 @@
+ 	if err != nil {
+ 		t.Fatal(err)
+ 	}
+-	want := `{"model":"nai-diffusion-3","positivePrompt":"1girl","negativePrompt":"bad","scale":5,"steps":28,"width":1024,"height":1024,"promptGuidanceRescale":5,"noise_schedule":"native","seed":"-1","sampler":"k_euler","sm":false,"sm_dyn":false}`
++	want := `{"model":"nai-diffusion-3","positivePrompt":"1girl","negativePrompt":"bad","scale":5,"steps":28,"width":1024,"height":1024,"promptGuidanceRescale":0.28,"noise_schedule":"native","seed":"-1","sampler":"k_euler","sm":false,"sm_dyn":false}`
+ 	if string(raw) != want {
+ 		t.Fatalf("proxy body mismatch\n got: %s\nwant: %s", raw, want)
+ 	}
+--- a/nai/pipeline.go
++++ b/nai/pipeline.go
+@@ -133,6 +133,14 @@
+ 		}
+ 		out.Images = append(out.Images, b)
+ 	}
++	// 8.1 反代只给 image_url、不给 base64 时（如 nai.xianyuww.cn / nai.xianyuw.cn），
++	// 需要把直链下载回来，否则下游按"没出图"处理。
++	if len(out.Images) == 0 && strings.TrimSpace(out.ImageURL) != "" {
++		if b, err := c2.FetchImageBytes(ctx, out.ImageURL); err == nil && len(b) > 0 {
++			out.Images = append(out.Images, b)
++		}
++	}
++
+ 	// 8.5 图片直链：反代通道若没给 image_url，就把图传到上传接口换直链。
+ 	// 对应 0x1005F0C2-0x1005F100：成员("image_url") 为空 -> 分支到 0x1005F1D4 上传。
+ 	if out.ImageURL == "" && len(out.Images) > 0 {
+--- a/nai/sd_cmd.go
++++ b/nai/sd_cmd.go
+@@ -4,9 +4,6 @@
+ 	"context"
+ 	"encoding/base64"
+ 	"encoding/json"
+-	"fmt"
+-	"io"
+-	"net/http"
+ 	"os"
+ 	"strconv"
+ 	"strings"
+@@ -400,25 +397,9 @@
+ 
+ // FetchImageBase64 下载一张图并转成 base64，供 img2img 的 init_images[0]。
+ func (c *Client) FetchImageBase64(ctx context.Context, u string) (string, error) {
+-	u = strings.TrimSpace(u)
+-	if u == "" {
+-		return "", fmt.Errorf("图片地址为空")
+-	}
+-	if strings.HasPrefix(u, "base64://") {
+-		return strings.TrimPrefix(u, "base64://"), nil
+-	}
+-	req, err := http.NewRequestWithContext(ctx, http.MethodGet, u, nil)
++	b, err := c.FetchImageBytes(ctx, u)
+ 	if err != nil {
+ 		return "", err
+-	}
+-	resp, err := c.HTTP.Do(req)
+-	if err != nil {
+-		return "", fmt.Errorf("%s", MsgSDLinkFailed)
+-	}
+-	defer resp.Body.Close()
+-	b, err := io.ReadAll(resp.Body)
+-	if err != nil {
+-		return "", fmt.Errorf("%s", MsgSDLinkFailed)
+ 	}
+ 	return base64.StdEncoding.EncodeToString(b), nil
+ }

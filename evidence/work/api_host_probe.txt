@@ -1,0 +1,31 @@
+api.xianyuw.cn         /api/generate_image    -> ERR 409 HTTP Error 409: Conflict {"type":"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1001/","title":"Error 1001: DNS resolution err
+api.xianyuw.cn         /                      -> ERR 409 HTTP Error 409: Conflict {"type":"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1001/","title":"Error 1001: DNS resolution err
+nai.xianyuw.cn         /api/generate_image    -> ERR 400 HTTP Error 400: Bad Request {"success":false,"error":"Invalid parameters","message":"positivePrompt字段是必需的（正向提示词，描述想要生成的图像内容）","details":"�
+nai.xianyuw.cn         /                      -> ERR 404 HTTP Error 404: Not Found {"success":false,"error":"未找到","message":"路由 POST / 未找到"}
+xyadmin.xianyuw.cn     /api/generate_image    -> ERR 404 HTTP Error 404:  <!doctype html><html lang="en"><head><title>HTTP Status 404 – Not Found</title><style type="text/css">body {font-family:Tahoma,Arial,sans-serif;} h1, h2, h3, 
+xyadmin.xianyuw.cn     /                      -> ERR 404 HTTP Error 404:  <!doctype html><html lang="en"><head><title>HTTP Status 404 – Not Found</title><style type="text/css">body {font-family:Tahoma,Arial,sans-serif;} h1, h2, h3, 
+res.xianyuw.cn         /api/generate_image    -> ERR 404 HTTP Error 404: Not Found <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+res.xianyuw.cn         /                      -> ERR - The read operation timed out 
+xianyu.xianyuw.cn      /api/generate_image    -> ERR 404 HTTP Error 404: Not Found <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+xianyu.xianyuw.cn      /                      -> ERR 405 HTTP Error 405: Not Allowed <html>
+<head><title>405 Not Allowed</title></head>
+<body>
+<center><h1>405 Not Allowed</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+
+api.xianyuww.cn        dns=fail:gaierror
+nai.xianyuww.cn        dns=fail:gaierror
